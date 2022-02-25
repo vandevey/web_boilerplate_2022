@@ -2,14 +2,17 @@
   "name": "2022_boilerplate",
   "version": "1.0.0",
   "scripts": {
-    "build": "webpack --progress --config webpack.config.build.js",
-    "development": "webpack serve --progress --config webpack.config.development.js",
-    "start": "npm run development"
+    "backend:build": "node app.js",
+    "backend:development": "nodemon app.js",
+    "frontend:build": "webpack --progress --config webpack.config.build.js",
+    "frontend:development": "webpack serve --progress --config webpack.config.development.js",
+    "start": "concurrently --kill-others \"npm run backend:development\" \"npm run frontend:development\""
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
     "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "concurrently": "^6.1.0",
     "copy-webpack-plugin": "^8.1.1",
     "css-loader": "^6.6.0",
     "eslint": "^7.24.0",
@@ -37,5 +40,10 @@
     "webpack-merge": "^5.7.3"
   },
   "author": "Yoan Vandevelde",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "nodemon": "^2.0.15",
+    "pug": "^3.0.2"
+  }
 }
